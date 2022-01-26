@@ -3,14 +3,15 @@
 
 
 
+struct Node *front = NULL;
+struct Node *rear = NULL;
+
 struct Node
 {
     int data;
     struct Node *next;
 };
 
-struct Node *front = NULL;
-struct Node *rear = NULL;
 
 void enQueue(int val)
 {
