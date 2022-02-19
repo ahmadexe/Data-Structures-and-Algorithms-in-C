@@ -29,7 +29,6 @@ int main(int argc, char const *argv[])
 
     int array[] = {2,52,1,32,24};
     selectionSort(array, 5);
-    printArray(array, 5);
-    
+    printArray(array, 5);   
     return 0;
 }
