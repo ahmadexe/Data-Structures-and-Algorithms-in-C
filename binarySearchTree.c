@@ -72,24 +72,44 @@ int main(int argc, char const *argv[])
     / \
    4   6  
 */
-    
-    root->data = 7;
+
+/*
+        15
+      /  \
+     10    17
+    / \    / \
+   7   11  0  20
+*/
+
+    struct Node* newL = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* newR = (struct Node*)malloc(sizeof(struct Node));
+
+
+    root->data = 15;
     root->left = p1L;
     root->right = p1R;
 
-    p1L->data = 5;
+    p1L->data = 10;
     p1L->left = p2L;
     p1L->right = p2R;
 
-    p1R->data = 8;
-    p1R->left = NULL;
-    p1R->right = NULL;
+    p1R->data = 17;
+    p1R->left = newL;
+    p1R->right = newR;
 
-    p2L->data = 4;
+    newL->data = 0;
+    newL->left = NULL;
+    newL->right = NULL;
+
+    newR->data = 20;
+    newR->left = NULL;
+    newR->right = NULL;
+
+    p2L->data = 7;
     p2L->right = NULL;
     p2L->left = NULL;
 
-    p2R->data = 6;
+    p2R->data = 11;
     p2R->left = NULL;
     p2R->right = NULL;
  
