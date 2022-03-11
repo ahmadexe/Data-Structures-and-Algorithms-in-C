@@ -3,12 +3,12 @@ using namespace std;
 
 int partition(int arr[], int l, int h)
 {
-   int pivot = arr[l];
-   int i =  l + 1;
-   int j = h;
+    int pivot = arr[l];
+    int i = l + 1;
+    int j = h;
 
-   do
-   {
+    do
+    {
         while (arr[i] <= pivot)
         {
             i++;
@@ -18,22 +18,24 @@ int partition(int arr[], int l, int h)
             j--;
         }
 
-        if (i >= j){
+        if (i >= j)
+        {
             break;
         }
-        else{
+        else
+        {
             int temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
 
-   }while (i < j);
+    } while (i < j);
 
-   int temp = arr[l];
-   arr[l] = arr[j];
-   arr[j] = temp;
+    int temp = arr[l];
+    arr[l] = arr[j];
+    arr[j] = temp;
 
-   return j;
+    return j;
 }
 
 void quickSort(int arr[], int l, int h)
@@ -57,7 +59,6 @@ void printArray(int array[], int size)
 
 int main(int argc, char const *argv[])
 {
-
     int arr[] = {-3, -5, 2, 13, 12};
     quickSort(arr, 0, 4);
     printArray(arr, 5);
