@@ -13,7 +13,7 @@ void inorderTraversal(struct Node* root){
         inorderTraversal(root->left);
         arr[i] = root->data;
         i++;
-        printf("%d",root->data);
+        printf("%d, ",root->data);
         inorderTraversal(root->right);
     }
 }
@@ -23,8 +23,6 @@ int BSTcheck(int arr[]){
     int i = 0;
     int check = 1;
     while (j < 5){
-        printf("run");
-
         if (arr[i] > arr[j]){
             check = 0;
             break;
@@ -35,25 +33,6 @@ int BSTcheck(int arr[]){
     return check;
 }
 
-int check(struct Node* root){
-    
-    if (root->left == NULL && root->right == NULL){
-        printf("run");
-        return 1;
-    }
-
-    if ((root->data > root->left->data && root->data < root->right->data) && (check(root->left)) && (check(root->right))){
-        printf("run");
-        
-        return 1;
-    }
-
-    else{
-        printf("run");
-
-        return 0;
-    }
-}
 
 int main(int argc, char const *argv[])
 {
@@ -115,7 +94,6 @@ int main(int argc, char const *argv[])
  
     inorderTraversal(root);
     printf("\n");
-    printf("\n%d\n",check(root));
     printf("\n%d",BSTcheck(arr));
     return 0;
 }
