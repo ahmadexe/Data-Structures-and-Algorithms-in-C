@@ -1,20 +1,55 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 struct Node{
     int data;
     struct Node* left;
     struct Node* right;
 };
 
-struct Node* find(struct Node* root, int key){
-    while (root != NULL && root->data != key){
-        if (root->data < key){
-            root = root->right;
-        }
-        else if (root->data > key){
-            root = root->left;
-        }
+void inorderTraversal(struct Node* root){
+    if (root != NULL){
+        inorderTraversal(root->left);
+        printf("%d ",root->data);
+        inorderTraversal(root->right);
+    }
+}
+
+struct Node* preD(struct Node* root)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    root = root->left;
+    while (root->right != NULL)
+    {
+        root = root->right;
+    }
+    return root;
+}
+
+struct Node* deleteNode(struct Node* root, int value)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    if (root->right == NULL && root->left == NULL){
+        free(root);
+        return NULL;
+    }
+    else if (root->data < value)
+    {
+        root->right = deleteNode(root->right, value);
+    }
+    else if (root->data > value)
+    {
+        root->left = deleteNode(root->left, value);
+    }
+    else{
+        struct Node* iPre = preD(root);
+        root->data = iPre->data;
+        root->left = deleteNode(root->left, value);
     }
     return root;
 }
@@ -59,11 +94,9 @@ int main(int argc, char const *argv[])
     p2R->left = NULL;
     p2R->right = NULL;
 
-    struct Node* x = find(root,11);
-    if (x)
-        printf("%d",x->data);
-    else   
-        printf("Element not found");
-
+    inorderTraversal(root);
+    deleteNode(root, 15);
+    printf("\n");
+    inorderTraversal(root);
     return 0;
 }
